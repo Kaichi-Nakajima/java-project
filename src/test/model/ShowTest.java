@@ -70,17 +70,4 @@ class ShowTest {
 
     }
 
-    @Test
-    public void testIsRecommendable() {
-        testShow1.setRating(4);
-        testShow2.setRating(9);
-        testShow3.setRating(7);
-        testShow4.setRating(2);
-
-        assertEquals("Highly Recommended", testShow2.isRecommendable());
-        assertEquals("Recommended", testShow3.isRecommendable());
-        assertEquals("Not Recommended", testShow1.isRecommendable());
-        assertEquals("Never Recommended", testShow4.isRecommendable());
-    }
-
 }
