@@ -5,9 +5,9 @@
 ### What this application does
 This application allows users to **track all the TV shows and Movies they 
 have watched or are planning to watch**. For each show they have watched, 
-they will be able to record a rating out from 0 to 10, the genre, the status (on hold, completed, dropped, plan to watch) 
-number of episodes watched and a list of their favorite characters 
-and the actors who played them. Users will be able to view their list and select shows to see their details. 
+they will be able to record a rating out from 0 to 10, the genres, the director, 
+number of episodes watched and a list of their favorite characters. Users will be able to view their list and see the 
+details of each show.
 
 
 ### Who will use it
@@ -27,13 +27,18 @@ favorite shows in an organized manner.
 ### User Stories
 
 - As a user, I want to be able to add a show to my watch list
-- As a user, I want to be able to add a rating out of 10, the genre, the 
-number of episodes watched, the status (on hold, completed, plan to watch, dropped) 
-and their favorite character and the actor to each show
+- As a user, I want to be able to select a show and add a rating from 1 
+to 10, a list of genres,the director, number of episodes and a list of favorite 
+characters
+- As a user, I want to be able to view the list of shows in my watchlist
 - As a user, I want to be able to remove a show from my watch list
-- As a user, I want to be able to select a show and view the details 
-(rating, genre etc.)
-- As a user, I want to be able to save my watch list to a file
-- As a user, I want to be able to load a file that contains all existing 
-shows in the watch list
- 
+- As a user, I want to be able to view the total number of shows in my
+watchlist
+- As a user I want to be able to classify a show as short, medium or 
+long
+- As a user I want to be able to classify how recommendable a show is.
+- As a user I want to be able to see the number of short (1-25 episodes), 
+medium (26-65 episodes) and long(66+ episode) shows
+- As a user I want to be able to select a recommendability classification 
+and view a list with that classification
+
