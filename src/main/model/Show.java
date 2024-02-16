@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a Show having a name and episode count and rating
 public class Show {
 
     private String name;
@@ -80,16 +81,5 @@ public class Show {
         }
     }
 
-    public String isRecommendable() {
-        if (getRating() >= 9) {
-            return "Highly Recommended";
-        } else if (getRating() >= 7) {
-            return "Recommended";
-        } else if (getRating() >= 4) {
-            return "Not Recommended";
-        } else {
-            return "Never Recommended";
-        }
-    }
 
 }
