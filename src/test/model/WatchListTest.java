@@ -99,7 +99,7 @@ public class WatchListTest {
         testWatchList.addShow(testingShow5);
         testWatchList.addShow(testingShow6);
 
-        assertEquals(2, testWatchList.numOfShortShows());
+        assertEquals(2, testWatchList.numOfMediumShows());
 
     }
 
@@ -113,7 +113,7 @@ public class WatchListTest {
         testWatchList.addShow(testingShow5);
         testWatchList.addShow(testingShow6);
 
-        assertEquals(2, testWatchList.numOfShortShows());
+        assertEquals(2, testWatchList.numOfLongShows());
 
     }
 

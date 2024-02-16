@@ -9,6 +9,8 @@ class ShowTest {
     private Show testShow2;
     private Show testShow3;
     private Show testShow4;
+    private Show testShow5;
+    private Show testShow6;
 
     @BeforeEach
     public void runBefore() {
@@ -16,6 +18,8 @@ class ShowTest {
         testShow2 = new Show("Squid Game", 9);
         testShow3 = new Show("One Piece", 1093);
         testShow4 = new Show("Game of Thrones", 73);
+        testShow5 = new Show("Test Show 5", 65);
+        testShow6 = new Show("Test Show 6", 26);
 
 
     }
@@ -66,6 +70,8 @@ class ShowTest {
     public void testClassifyLength() {
         assertEquals("Short", testShow2.classifyLength());
         assertEquals("Medium", testShow1.classifyLength());
+        assertEquals("Medium", testShow5.classifyLength());
+        assertEquals("Medium", testShow6.classifyLength());
         assertEquals("Long", testShow3.classifyLength());
 
     }
