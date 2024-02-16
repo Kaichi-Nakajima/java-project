@@ -74,7 +74,7 @@ public class Show {
     public String classifyLength() {
         if (episodes <= 25) {
             return "Short";
-        } else if (episodes > 25 && episodes <= 65) {
+        } else if (episodes <= 65) {
             return "Medium";
         } else {
             return "Long";

@@ -117,4 +117,14 @@ public class WatchListTest {
 
     }
 
+    @Test
+    public void isEmptyTest() {
+        assertTrue(testWatchList.isEmpty());
+
+        testWatchList.addShow(testingShow1);
+
+        assertFalse(testWatchList.isEmpty());
+
+    }
+
 }

@@ -41,10 +41,11 @@ public class WatchList {
         watchList.remove(show);
     }
 
-    //EFFECTS: returns true is show is contained in watchList
+    //EFFECTS: returns true is show is contained in watchList and returns its name
     public boolean isContained(Show show) {
         return watchList.contains(show);
     }
+
 
     //EFFECTS: returns the number of shows in watchlist
     public int numOfShows() {
@@ -79,5 +80,9 @@ public class WatchList {
             }
         }
         return numLongShows;
+    }
+
+    public boolean isEmpty() {
+        return watchList.isEmpty();
     }
 }
