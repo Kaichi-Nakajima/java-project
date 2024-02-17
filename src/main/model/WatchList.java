@@ -33,9 +33,7 @@ public class WatchList {
     //EFFECTS: returns the names of shows currently in the watchlist
     public List<String> getWatchList() {
         for (Show show: watchList) {
-            if (watchList.contains(show)) {
-                showNameList.add(show.getName());
-            }
+            showNameList.add(show.getName());
         }
         return showNameList;
     }
