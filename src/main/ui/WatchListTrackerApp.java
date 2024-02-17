@@ -96,6 +96,7 @@ public class WatchListTrackerApp {
         }
     }
 
+    //REQUIRES: watch list is not empty
     //MODIFIES: this
     // EFFECTS: adds details to a show
     private void doAddDetails() {
@@ -125,6 +126,7 @@ public class WatchListTrackerApp {
         }
     }
 
+    //EFFECTS: prints out the details of a show
     private void doSeeDetails() {
         Show chosen = selectShow();
         String details = "";
