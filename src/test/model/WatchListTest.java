@@ -39,6 +39,8 @@ public class WatchListTest {
 
     @Test
     public void getWatchListTest() {
+        assertEquals(showList, testWatchList.getWatchList());
+
         testWatchList.addShow(testingShow1);
         testWatchList.addShow(testingShow2);
         testWatchList.addShow(testingShow3);
@@ -48,6 +50,7 @@ public class WatchListTest {
         showList.add("Black Mirror");
 
         assertEquals(showList, testWatchList.getWatchList());
+        assertFalse(testWatchList.getWatchList().contains(testingShow4));
 
     }
 
