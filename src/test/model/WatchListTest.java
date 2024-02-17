@@ -14,7 +14,7 @@ public class WatchListTest {
     private Show testingShow4;
     private Show testingShow5;
     private Show testingShow6;
-    private List<Show> showList;
+    private List<String> showList;
 
     @BeforeEach
     public void runBefore() {
@@ -43,9 +43,9 @@ public class WatchListTest {
         testWatchList.addShow(testingShow2);
         testWatchList.addShow(testingShow3);
 
-        showList.add(testingShow1);
-        showList.add(testingShow2);
-        showList.add(testingShow3);
+        showList.add("Jujutsu Kaisen");
+        showList.add("Pokemon");
+        showList.add("Black Mirror");
 
         assertEquals(showList, testWatchList.getWatchList());
 

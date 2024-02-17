@@ -34,9 +34,8 @@ characters
 - As a user, I want to be able to remove a show from my watch list
 - As a user, I want to be able to view the total number of shows in my
 watchlist
-- As a user I want to be able to classify a show as short, medium or 
-long
 - As a user I want to be able to see the number of short (1-25 episodes), 
 medium (26-65 episodes) and long(66+ episode) shows
+- As a user I want to be able to select a show and view its details
 
 

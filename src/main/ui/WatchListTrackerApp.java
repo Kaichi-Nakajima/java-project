@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.List;
 import java.util.Scanner;
 import model.WatchList;
 import model.Show;
@@ -46,14 +47,17 @@ public class WatchListTrackerApp {
             doAddShow();
         } else if (command.equals("d")) {
             doAddDetails();
+        } else if (command.equals("s")) {
+            doSeeDetails();
         } else if (command.equals("r")) {
             doRemoveShow();
         } else if (command.equals("v")) {
             doViewList();
-        } else {
+        } else if (command.equals("n")) {
             doNumShows();
+        } else {
+            System.out.println("selection not valid");
         }
-
     }
 
     //EFFECTS: initializes watchList
@@ -68,9 +72,11 @@ public class WatchListTrackerApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add show");
         System.out.println("\td -> add details");
+        System.out.println("\ts -> see details");
         System.out.println("\tr -> remove show");
         System.out.println("\tv -> view list");
         System.out.println("\tn -> number of shows");
+        System.out.println("\tq -> quit");
 
     }
 
@@ -90,6 +96,8 @@ public class WatchListTrackerApp {
         }
     }
 
+    //MODIFIES: this
+    // EFFECTS: adds details to a show
     private void doAddDetails() {
         Show selected = selectShow();
         String detail = "";
@@ -117,22 +125,45 @@ public class WatchListTrackerApp {
         }
     }
 
+    private void doSeeDetails() {
+        Show chosen = selectShow();
+        String details = "";
+
+        while (!(details.equals("r") || details.equals("g") || details.equals("c"))) {
+            System.out.println("r for rating");
+            System.out.println("g for genre");
+            System.out.println("c for character");
+            details = input.next();
+            details = details.toLowerCase();
+        }
+
+        if (details.equals("r")) {
+            System.out.println(chosen.getRating());
+        } else if (details.equals("g")) {
+            System.out.println(chosen.getListOfGenres());
+        } else {
+            System.out.println(chosen.getFavCharacters());
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: removes show from watch list
     private void doRemoveShow() {
         Show removeSelect = selectShow();
         watchList.removeShow(removeSelect);
         System.out.println("show has been removed");
     }
 
-    private WatchList doViewList() {
-        if (!watchList.isEmpty()) {
-            return watchList;
-        }
-        System.out.println("there is nothing in the watch list");
-        return null;
-
+    //EFFECTS: prints out the shows in the watch list
+    private void doViewList() {
+        System.out.println("Watch List:" + watchList.getWatchList());
     }
 
-    private int doNumShows() {
+    // EFFECTS: prints out the number of total number of shows
+    //          number of short shows
+    //          number of medium shows
+    //           or number of long shows
+    private void doNumShows() {
         String select = "";
 
         while (!(select.equals("t") || select.equals("s")
@@ -146,16 +177,17 @@ public class WatchListTrackerApp {
         }
 
         if (select.equals("t")) {
-            return watchList.numOfShows();
+            System.out.println(watchList.numOfShows());
         } else if (select.equals("s")) {
-            return watchList.numOfShortShows();
+            System.out.println(watchList.numOfShortShows());
         } else if (select.equals("m")) {
-            return watchList.numOfMediumShows();
+            System.out.println(watchList.numOfMediumShows());
         } else {
-            return watchList.numOfLongShows();
+            System.out.println(watchList.numOfLongShows());
         }
     }
 
+    //EFFECTS: prompts user to select a show
     private Show selectShow() {
         String selection = "";
 

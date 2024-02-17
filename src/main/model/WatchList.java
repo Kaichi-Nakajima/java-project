@@ -9,6 +9,7 @@ public class WatchList {
     private int numShortShows = 0;
     private int numMediumShows = 0;
     private int numLongShows = 0;
+    private List<String> showNameList = new ArrayList<>();
 
     //EFFECTS: creates an instance of this class with an empty watchlist
     public WatchList() {
@@ -29,9 +30,14 @@ public class WatchList {
         return watchList.get(n);
     }
 
-    //EFFECTS: returns the current state of the watchlist
-    public List<Show> getWatchList() {
-        return watchList;
+    //EFFECTS: returns the names of shows currently in the watchlist
+    public List<String> getWatchList() {
+        for (Show show: watchList) {
+            if (watchList.contains(show)) {
+                showNameList.add(show.getName());
+            }
+        }
+        return showNameList;
     }
 
     //REQUIRES: watchlist is not empty
