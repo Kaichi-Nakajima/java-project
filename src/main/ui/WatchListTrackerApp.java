@@ -99,31 +99,41 @@ public class WatchListTrackerApp {
     //REQUIRES: watch list is not empty
     //MODIFIES: this
     // EFFECTS: adds details to a show
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private void doAddDetails() {
         Show selected = selectShow();
         String detail = "";
 
-        while (!(detail.equals("r") || detail.equals("g") || detail.equals("c"))) {
-            System.out.println("r for rating");
-            System.out.println("g for genre");
-            System.out.println("c for character");
-            detail = input.next();
-            detail = detail.toLowerCase();
+        if (selected == null) {
+            System.out.println("there is nothing in the watchlist");
+            System.out.println("add a show to the watchlist");
+        } else {
+            while (!(detail.equals("r") || detail.equals("g") || detail.equals("c"))) {
+                System.out.println("r for rating");
+                System.out.println("g for genre");
+                System.out.println("c for character");
+                detail = input.next();
+                detail = detail.toLowerCase();
+                if (detail.equals("r")) {
+                    System.out.println("enter rating");
+                    int rating = input.nextInt();
+                    if (rating >= 1 && rating <= 10) {
+                        selected.setRating(rating);
+                    } else {
+                        System.out.println("Rating must be from 1 to 10");
+                    }
+                } else if (detail.equals("g")) {
+                    System.out.println("enter genre");
+                    String genre = input.next();
+                    selected.addGenre(genre);
+                } else {
+                    System.out.println("enter character");
+                    String character = input.next();
+                    selected.addFavCharacter(character);
+                }
+            }
         }
 
-        if (detail.equals("r")) {
-            System.out.println("enter rating");
-            int rating = input.nextInt();
-            selected.setRating(rating);
-        } else if (detail.equals("g")) {
-            System.out.println("enter genre");
-            String genre = input.next();
-            selected.addGenre(genre);
-        } else {
-            System.out.println("enter character");
-            String character = input.next();
-            selected.addFavCharacter(character);
-        }
     }
 
     //EFFECTS: prints out the details of a show
@@ -131,20 +141,25 @@ public class WatchListTrackerApp {
         Show chosen = selectShow();
         String details = "";
 
-        while (!(details.equals("r") || details.equals("g") || details.equals("c"))) {
-            System.out.println("r for rating");
-            System.out.println("g for genre");
-            System.out.println("c for character");
-            details = input.next();
-            details = details.toLowerCase();
-        }
-
-        if (details.equals("r")) {
-            System.out.println(chosen.getRating());
-        } else if (details.equals("g")) {
-            System.out.println(chosen.getListOfGenres());
+        if (chosen == null) {
+            System.out.println("there is nothing in the watchlist");
+            System.out.println("add a show to the watchlist");
         } else {
-            System.out.println(chosen.getFavCharacters());
+            while (!(details.equals("r") || details.equals("g") || details.equals("c"))) {
+                System.out.println("r for rating");
+                System.out.println("g for genre");
+                System.out.println("c for character");
+                details = input.next();
+                details = details.toLowerCase();
+
+                if (details.equals("r")) {
+                    System.out.println(chosen.getRating());
+                } else if (details.equals("g")) {
+                    System.out.println(chosen.getListOfGenres());
+                } else {
+                    System.out.println(chosen.getFavCharacters());
+                }
+            }
         }
     }
 
@@ -153,12 +168,20 @@ public class WatchListTrackerApp {
     private void doRemoveShow() {
         Show removeSelect = selectShow();
         watchList.removeShow(removeSelect);
-        System.out.println("show has been removed");
+        if (selectShow() == null) {
+            System.out.println("there is no show to remove in watchlist");
+        } else {
+            System.out.println("show has been removed");
+        }
     }
 
     //EFFECTS: prints out the shows in the watch list
     private void doViewList() {
-        System.out.println("Watch List:" + watchList.getWatchList());
+        if (watchList.isEmpty()) {
+            System.out.println("looks like the watchlist is empty!");
+        } else {
+            System.out.println("Watch List:" + watchList.getWatchList());
+        }
     }
 
     // EFFECTS: prints out the number of total number of shows
@@ -193,9 +216,14 @@ public class WatchListTrackerApp {
     private Show selectShow() {
         String selection = "";
 
+        if (watchList.isEmpty()) {
+            return null;
+        }
+
         while (!(selection.equals(show.getName()))) {
             System.out.println("type name of the show");
             selection = input.next();
+            System.out.println("the show is not in the list");
         }
 
         if (selection.equals(show.getName())) {
