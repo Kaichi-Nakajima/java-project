@@ -32,10 +32,10 @@ to 10, a list of genres,the director, number of episodes and a list of favorite
 characters
 - As a user, I want to be able to view the list of shows in my watchlist
 - As a user, I want to be able to remove a show from my watch list
-- As a user, I want to be able to view the total number of shows in my
-watchlist
-- As a user I want to be able to see the number of short (1-25 episodes), 
-medium (26-65 episodes) and long(66+ episode) shows
-- As a user I want to be able to select a show and view its details
-
+- As a user, I want to be able to view the number of total, short (1-25 
+- episodes), medium (26-65 episodes) and long(66+ episode) shows in 
+my watchlist
+- As a user, I want to be able to select a show and view its details
+- As a user, I want to be able to save my watchlist to file
+- As a user, I want to be able to load my watchlist from file
 
