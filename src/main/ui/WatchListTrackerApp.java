@@ -1,16 +1,14 @@
 package ui;
 
-import java.util.List;
 import java.util.Scanner;
 import model.WatchList;
 import model.Show;
 
 //WatchList Tracker Application
-//Code Reference: Teller Application, TellerApp class
+//Code Reference: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
 public class WatchListTrackerApp {
     private WatchList watchList;
-    private Show show;
     private Scanner input;
 
     //EFFECTS: runs the WatchList Tracker App
@@ -83,6 +81,7 @@ public class WatchListTrackerApp {
     //MODIFIES: this
     //EFFECTS: adds a show to watchlist
     private void doAddShow() {
+        Show show;
         System.out.println("enter the name of the show");
         String name = input.next();
         System.out.println("enter number of episodes");
@@ -106,7 +105,6 @@ public class WatchListTrackerApp {
 
         if (selected == null) {
             System.out.println("there is nothing in the watchlist");
-            System.out.println("add a show to the watchlist");
         } else {
             while (!(detail.equals("r") || detail.equals("g") || detail.equals("c"))) {
                 System.out.println("r for rating");
@@ -142,8 +140,7 @@ public class WatchListTrackerApp {
         String details = "";
 
         if (chosen == null) {
-            System.out.println("there is nothing in the watchlist");
-            System.out.println("add a show to the watchlist");
+            System.out.println("show is not in the watchlist");
         } else {
             while (!(details.equals("r") || details.equals("g") || details.equals("c"))) {
                 System.out.println("r for rating");
@@ -167,10 +164,10 @@ public class WatchListTrackerApp {
     //EFFECTS: removes show from watch list
     private void doRemoveShow() {
         Show removeSelect = selectShow();
-        watchList.removeShow(removeSelect);
-        if (selectShow() == null) {
+        if (removeSelect == null) {
             System.out.println("there is no show to remove in watchlist");
         } else {
+            watchList.removeShow(removeSelect);
             System.out.println("show has been removed");
         }
     }
@@ -180,7 +177,7 @@ public class WatchListTrackerApp {
         if (watchList.isEmpty()) {
             System.out.println("looks like the watchlist is empty!");
         } else {
-            System.out.println("Watch List:" + watchList.getWatchList());
+            System.out.println("Watch List:" + watchList.getShowNamesList());
         }
     }
 
@@ -217,21 +214,20 @@ public class WatchListTrackerApp {
         String selection = "";
 
         if (watchList.isEmpty()) {
+            System.out.println("there is nothing in the watchlist");
+            System.out.println("add a show to the watchlist");
             return null;
         }
 
-        while (!(selection.equals(show.getName()))) {
+        while (selection.equals("")) {
             System.out.println("type name of the show");
             selection = input.next();
-            System.out.println("the show is not in the list");
         }
 
-        if (selection.equals(show.getName())) {
-            return show;
-        } else {
-            System.out.println("show is not in list");
-        }
-        return null;
+
+        return watchList.getShowName(selection);
+
+
     }
 
 }

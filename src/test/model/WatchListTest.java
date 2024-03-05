@@ -38,8 +38,23 @@ public class WatchListTest {
     }
 
     @Test
+    public void getShowNameTest() {
+        assertEquals(null, testWatchList.getShowName("One Piece"));
+
+        testWatchList.addShow(testingShow1);
+        testWatchList.addShow(testingShow2);
+        testWatchList.addShow(testingShow3);
+
+        assertEquals(testingShow1, testWatchList.getShowName("Jujutsu Kaisen"));
+        assertEquals(testingShow2, testWatchList.getShowName("Pokemon"));
+        assertEquals(testingShow3, testWatchList.getShowName("Black Mirror"));
+        assertEquals(null, testWatchList.getShowName("One Piece"));
+
+    }
+
+    @Test
     public void getWatchListTest() {
-        assertEquals(showList, testWatchList.getWatchList());
+        assertEquals(showList, testWatchList.getShowNamesList());
 
         testWatchList.addShow(testingShow1);
         testWatchList.addShow(testingShow2);
@@ -49,8 +64,33 @@ public class WatchListTest {
         showList.add("Pokemon");
         showList.add("Black Mirror");
 
-        assertEquals(showList, testWatchList.getWatchList());
-        assertFalse(testWatchList.getWatchList().contains(testingShow4));
+        assertEquals(showList, testWatchList.getShowNamesList());
+        assertFalse(testWatchList.getShowNamesList().contains(testingShow4));
+
+    }
+
+    @Test
+    public void isContainedTest() {
+        testWatchList.addShow(testingShow1);
+        testWatchList.addShow(testingShow2);
+        testWatchList.addShow(testingShow3);
+
+        assertTrue(testWatchList.isContained(testingShow1));
+        assertTrue(testWatchList.isContained(testingShow2));
+        assertTrue(testWatchList.isContained(testingShow3));
+        assertFalse(testWatchList.isContained(testingShow4));
+    }
+
+    @Test
+    public void isNameContainedTest() {
+        testWatchList.addShow(testingShow1);
+        testWatchList.addShow(testingShow2);
+        testWatchList.addShow(testingShow3);
+
+        assertTrue(testWatchList.isNameContained("Jujutsu Kaisen"));
+        assertTrue(testWatchList.isNameContained("Pokemon"));
+        assertTrue(testWatchList.isNameContained("Black Mirror"));
+        assertFalse(testWatchList.isNameContained("One Piece"));
 
     }
 
