@@ -1,17 +1,19 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a Show having a name and episode count and rating
-public class Show {
+public class Show implements Writable {
 
     private String name;
     private int rating;
-    private ArrayList<String> listOfGenres;
-    private String director;
+    private List<String> listOfGenres;
     private int episodes;
-    private ArrayList<String> favCharacters;
+    private List<String> favCharacters;
 
     //REQUIRES: name has string length greater than 0
     //            numEpisodes is >= 1
@@ -38,7 +40,7 @@ public class Show {
         return rating;
     }
 
-    public ArrayList<String> getListOfGenres() {
+    public List<String> getListOfGenres() {
         return listOfGenres;
     }
 
@@ -79,6 +81,17 @@ public class Show {
         } else {
             return "Long";
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("episodes", episodes);
+        json.put("rating", rating);
+        json.put("genres", listOfGenres);
+        json.put("favCharacters", favCharacters);
+        return json;
     }
 
 

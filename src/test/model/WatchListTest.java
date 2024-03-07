@@ -38,6 +38,18 @@ public class WatchListTest {
     }
 
     @Test
+    public void getShowsTest() {
+        testWatchList.addShow(testingShow3);
+        testWatchList.addShow(testingShow1);
+
+        WatchList wl = new WatchList();
+        wl.addShow(testingShow3);
+        wl.addShow(testingShow1);
+
+        assertEquals(wl.getShows(), testWatchList.getShows());
+    }
+
+    @Test
     public void getShowNameTest() {
         assertEquals(null, testWatchList.getShowName("One Piece"));
 

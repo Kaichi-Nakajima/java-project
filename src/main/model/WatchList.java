@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.List;
+import java.util.Collections;
 import java.util.ArrayList;
 
 //Represents of List of Shows
-public class WatchList {
+public class WatchList implements Writable {
     private final List<Show> watchList;
     private int numShortShows = 0;
     private int numMediumShows = 0;
@@ -20,6 +25,7 @@ public class WatchList {
     //MODIFIES: this
     //EFFECTS: takes a show and adds it to watchList
     public void addShow(Show show) {
+
         watchList.add(show);
     }
 
@@ -29,8 +35,12 @@ public class WatchList {
         return watchList.get(n);
     }
 
+    public List<Show> getShows() {
+        return Collections.unmodifiableList(watchList);
+    }
+
     //REQUIRES: watchlist is not empty
-    //EFFECTS: returns the name of the show if it is contained in the watchlist
+    //EFFECTS: returns the show if it is contained in the watchlist
     public Show getShowName(String nameShow) {
         for (Show show: watchList) {
             if (show.getName().equals(nameShow)) {
@@ -109,5 +119,23 @@ public class WatchList {
 
     public boolean isEmpty() {
         return watchList.isEmpty();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("shows", watchListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this worklist as JSON array
+    private JSONArray watchListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Show s : watchList) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 }

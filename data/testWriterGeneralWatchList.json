@@ -1,0 +1,28 @@
+{"shows": [
+    {
+        "genres": [
+            "action",
+            "adventure"
+        ],
+        "name": "Pokemon",
+        "rating": 7,
+        "favCharacters": [
+            "Pikachu",
+            "Ash Ketchum"
+        ],
+        "episodes": 1000
+    },
+    {
+        "genres": [
+            "crime",
+            "suspense"
+        ],
+        "name": "Breaking Bad",
+        "rating": 10,
+        "favCharacters": [
+            "Walter White",
+            "Saul Goodman"
+        ],
+        "episodes": 63
+    }
+]}
