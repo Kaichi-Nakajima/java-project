@@ -3,16 +3,29 @@ package ui;
 import java.util.Scanner;
 import model.WatchList;
 import model.Show;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 //WatchList Tracker Application
 //Code Reference: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
 public class WatchListTrackerApp {
+    private static final String JSON_STORE = "./data/watchlist.json";
     private WatchList watchList;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the WatchList Tracker App
-    public WatchListTrackerApp() {
+    public WatchListTrackerApp() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        watchList = new WatchList();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runTracker();
     }
 
@@ -45,7 +58,7 @@ public class WatchListTrackerApp {
             doAddShow();
         } else if (command.equals("d")) {
             doAddDetails();
-        } else if (command.equals("s")) {
+        } else if (command.equals("c")) {
             doSeeDetails();
         } else if (command.equals("r")) {
             doRemoveShow();
@@ -53,6 +66,10 @@ public class WatchListTrackerApp {
             doViewList();
         } else if (command.equals("n")) {
             doNumShows();
+        } else if (command.equals("s")) {
+            saveWatchList();
+        } else if (command.equals("l")) {
+            loadWatchList();
         } else {
             System.out.println("selection not valid");
         }
@@ -70,10 +87,12 @@ public class WatchListTrackerApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add show");
         System.out.println("\td -> add details");
-        System.out.println("\ts -> see details");
+        System.out.println("\tc -> check details");
         System.out.println("\tr -> remove show");
         System.out.println("\tv -> view list");
         System.out.println("\tn -> number of shows");
+        System.out.println("\ts -> save watchlist to file");
+        System.out.println("\tl -> load watchlist to file");
         System.out.println("\tq -> quit");
 
     }
@@ -226,8 +245,29 @@ public class WatchListTrackerApp {
 
 
         return watchList.getShowName(selection);
+    }
 
+    // EFFECTS: saves the watchlist to file
+    private void saveWatchList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(watchList);
+            jsonWriter.close();
+            System.out.println("Saved WatchList to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
 
+    // MODIFIES: this
+    // EFFECTS: loads watchlist from file
+    private void loadWatchList() {
+        try {
+            watchList = jsonReader.read();
+            System.out.println("Loaded WatchList from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to reader from file: " + JSON_STORE);
+        }
     }
 
 }
