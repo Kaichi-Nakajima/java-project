@@ -8,7 +8,6 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 //WatchList Tracker Application
 //Code Reference: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git

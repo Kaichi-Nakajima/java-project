@@ -6,6 +6,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Code Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 public class JsonTest {
     protected void checkShow(String name,
                              int episodes,

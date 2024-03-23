@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 
+// Code Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonWriterTest extends JsonTest{
