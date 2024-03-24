@@ -6,16 +6,20 @@ import java.awt.GridLayout;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import model.Show;
 import model.WatchList;
 
-public class WatchListGui extends JFrame{
+public class WatchListGui extends JFrame {
 
     private WatchList watchlist;
     private JTextField inputName;
     private JTextField inputEps;
-    private JButton confirm;
+    private JButton confirmName;
+    private JButton confirmEps;
+    private Show show;
 
     public WatchListGui() {
         super("WatchList GUI");
@@ -26,52 +30,54 @@ public class WatchListGui extends JFrame{
 
         inputName = new JTextField();
         inputEps = new JTextField();
-        confirm = new JButton("confirm");
+
+        buttonPanel();
+
+        setVisible(true);
 
     }
 
     // EFFECTS: creates control buttons
     private void buttonPanel() {
+        inputName = new JTextField("Add Show Name");
+        inputEps = new JTextField("Add Episodes");
+
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(8,1));
-        buttonPanel.add(new JButton(new AddCodeAction()));
+        buttonPanel.setLayout(new GridLayout(1, 3));
+        buttonPanel.add(inputName);
+        buttonPanel.add(inputEps);
+        buttonPanel.add(new JButton(new AddShowAction()));
+
+        add(buttonPanel, BorderLayout.NORTH);
 
 
     }
 
     //MODIFIES: this
-    //EFFECTS: adds a show to watchlist
-    private void doAddShow() {
-        Show show;
-        System.out.println("enter the name of the show");
-        String name = input.next();
-        System.out.println("enter number of episodes");
-        int episodes = input.nextInt();
-        show = new Show(name, episodes);
+    //EFFECTS: action that adds a show to watchlist
+    private class AddShowAction extends AbstractAction {
 
-        if (!watchlist.isContained(show)) {
-            watchlist.addShow(show);
-        } else {
-            System.out.println("show is already in watch list");
-        }
-    }
-
-    //EFFECTS: prompts user to select a show
-    private Show selectShow() {
-        String selection = "";
-
-        if (watchlist.isEmpty()) {
-            System.out.println("there is nothing in the watchlist");
-            System.out.println("add a show to the watchlist");
-            return null;
+        AddShowAction() {
+            super("Add Show");
         }
 
-        while (selection.equals("")) {
-            System.out.println("type name of the show");
-            selection = input.next();
+        /**
+         * Invoked when an action occurs.
+         *
+         * @param e the event to be processed
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String name = inputName.getText();
+            int eps = Integer.parseInt(inputEps.getText());
+
+            if (!name.equals("") && eps > 0) {
+                show = new Show(name, eps);
+            }
+
+            if (!watchlist.isContained(show)) {
+                watchlist.addShow(show);
+            }
         }
-
-
-        return watchlist.getShowName(selection);
     }
 }
