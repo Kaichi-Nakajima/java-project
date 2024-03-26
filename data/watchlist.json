@@ -1,1 +1,7 @@
-{"shows": []}
+{"shows": [{
+    "genres": [],
+    "name": "One Piece",
+    "rating": 1,
+    "favCharacters": [],
+    "episodes": 1000
+}]}

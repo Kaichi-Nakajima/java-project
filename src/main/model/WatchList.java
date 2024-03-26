@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
+// Code Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 //Represents of List of Shows
 public class WatchList implements Writable {
     private final List<Show> watchList;
@@ -35,12 +37,13 @@ public class WatchList implements Writable {
         return watchList.get(n);
     }
 
+    //EFFECTS: returns an unmodifiable watchlist at its current state
     public List<Show> getShows() {
         return Collections.unmodifiableList(watchList);
     }
 
     //REQUIRES: watchlist is not empty
-    //EFFECTS: returns the show if it is contained in the watchlist
+    //EFFECTS: returns the show if its name is contained in the watchlist
     public Show getShowName(String nameShow) {
         for (Show show: watchList) {
             if (show.getName().equals(nameShow)) {
@@ -66,7 +69,7 @@ public class WatchList implements Writable {
         watchList.remove(show);
     }
 
-    //EFFECTS: returns true is show is contained in watchList and returns its name
+    //EFFECTS: returns true is show is contained in watchList
     public boolean isContained(Show show) {
         return watchList.contains(show);
     }

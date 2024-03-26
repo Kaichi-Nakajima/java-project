@@ -6,6 +6,8 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Code Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // Represents a Show having a name and episode count and rating
 public class Show implements Writable {
 
