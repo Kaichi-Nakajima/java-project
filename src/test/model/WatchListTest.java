@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
+// Represents test for WathList class
 public class WatchListTest {
     private WatchList testWatchList;
     private Show testingShow1;

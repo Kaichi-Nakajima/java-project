@@ -12,6 +12,7 @@ import java.io.IOException;
 //WatchList Tracker Application
 //Code Reference: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 
+// Represents the console ui for watchListTrackerApp
 public class WatchListTrackerApp {
     private static final String JSON_STORE = "./data/watchlist.json";
     private WatchList watchList;

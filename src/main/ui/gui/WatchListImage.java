@@ -5,6 +5,7 @@ import javax.swing.*;
 // Code Reference: https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter.git
 // Image Reference: https://openart.ai/discovery/sd-1008661589823598612
 
+// Represents the panel for the image in application
 public class WatchListImage extends JPanel {
     private WatchListGui watchListGui;
     private JPanel imagePanel;

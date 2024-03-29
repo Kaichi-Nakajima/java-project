@@ -20,6 +20,7 @@ import model.WatchList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+// Represents applications main window frame
 public class WatchListGui extends JFrame {
 
     private static final String JSON_STORE = "./data/watchlist.json";

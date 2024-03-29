@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
+// Represents tests for Show class
 class ShowTest {
     private Show testShow1;
     private Show testShow2;
