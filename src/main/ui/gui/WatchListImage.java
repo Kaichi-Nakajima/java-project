@@ -27,8 +27,7 @@ public class WatchListImage extends JPanel {
     //EFFECTS: loads the image
     public void loadImage() {
         String sep = System.getProperty("file.separator");
-        logo = new ImageIcon(System.getProperty("user.dir") + sep
-                + "data" + sep + "MYSHOWWATCHLIST.png");
+        logo = new ImageIcon("data" + sep + "MYSHOWWATCHLIST.png");
     }
 
     //EFFECTS: sets the image to panel

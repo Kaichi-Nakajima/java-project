@@ -39,3 +39,20 @@ my watchlist
 - As a user, I want to be able to save my watchlist to file
 - As a user, I want to be able to load my watchlist from file
 
+### Instructions for Grader
+
+- You can generate the first required action related to the user 
+story "adding multiple Xs to a Y" by filling the text box that says 
+"Add Show Name" with the name of the show and entering the
+number of episodes in the text box that says "Add Episodes". 
+Then click on "Add Show".
+- You can generate the second required action related to the user 
+story "adding multiple Xs to a Y" by entering the name of the 
+show you want to remove then click "Remove Show".
+- To view the current state of the watchlist, click on "View List" 
+which will display the names of the shows currently in the 
+watchlist
+- You can locate my visual component by loading the application 
+and look at the top of the window.
+- You can save the state of my application by clicking on "Save"
+- You can reload the state of my application by clicking on "Load"
