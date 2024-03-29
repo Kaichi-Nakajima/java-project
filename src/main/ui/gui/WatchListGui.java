@@ -1,4 +1,4 @@
-package ui;
+package ui.gui;
 
 //code Reference: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
 //                https://docs.oracle.com/javase/jp/8/docs/api/javax/swing/JList.html
@@ -30,8 +30,10 @@ public class WatchListGui extends JFrame {
     private Show show;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private WatchListImage image;
 
-    public WatchListGui() {
+    //EFFECTS: runs Watch List GUI
+    public WatchListGui() throws FileNotFoundException {
         super("WatchList GUI");
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,12 +42,15 @@ public class WatchListGui extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
+
         inputName = new JTextField();
         inputEps = new JTextField();
 
         buttonPanel();
         actionPanel();
+        addImageGUI();
 
+        pack();
         setVisible(true);
 
     }
@@ -56,13 +61,13 @@ public class WatchListGui extends JFrame {
         inputEps = new JTextField("Add Episodes");
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 4));
+        buttonPanel.setLayout(new GridLayout(4, 1));
         buttonPanel.add(inputName);
         buttonPanel.add(inputEps);
         buttonPanel.add(new JButton(new AddShowAction()));
         buttonPanel.add(new JButton(new RemoveAction()));
 
-        add(buttonPanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.WEST);
 
 
     }
@@ -79,7 +84,7 @@ public class WatchListGui extends JFrame {
         add(actionPanel, BorderLayout.SOUTH);
     }
 
-    //MODIFIES: this
+    //MODIFIES: show, watchlist
     //EFFECTS: action that adds a show to watchlist
     private class AddShowAction extends AbstractAction {
 
@@ -107,6 +112,8 @@ public class WatchListGui extends JFrame {
         }
     }
 
+    //MODIFIES: show, watchlist
+    //EFFECTS: action that removes a show from watchlist
     private class RemoveAction extends AbstractAction {
 
         RemoveAction() {
@@ -129,6 +136,8 @@ public class WatchListGui extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: action that saves watchlist to file
     private class SaveAction extends AbstractAction {
 
         SaveAction() {
@@ -154,6 +163,8 @@ public class WatchListGui extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: action that loads watchlist from file
     private class LoadAction extends AbstractAction {
 
         LoadAction() {
@@ -177,6 +188,8 @@ public class WatchListGui extends JFrame {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: action that displays names of shows in the watchlist
     private class ViewAction extends AbstractAction {
 
         ViewAction() {
@@ -194,6 +207,11 @@ public class WatchListGui extends JFrame {
             add(shows, BorderLayout.CENTER);
             setVisible(true);
         }
+    }
+
+    private void addImageGUI() {
+        image = new WatchListImage(this);
+        add(image, BorderLayout.NORTH);
     }
 
 

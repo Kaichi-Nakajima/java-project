@@ -1,13 +1,16 @@
 package ui;
 
+import ui.gui.WatchListGui;
+
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 public class Main extends JFrame {
     public static void main(String[] args) {
-        new WatchListGui();
+        try {
+            new WatchListGui();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to run application: file not found ");
+        }
     }
 }
