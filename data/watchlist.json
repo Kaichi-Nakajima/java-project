@@ -1,16 +1,16 @@
 {"shows": [
     {
         "genres": [],
-        "name": "One Piece",
-        "rating": 1,
-        "favCharacters": [],
-        "episodes": 1000
-    },
-    {
-        "genres": [],
         "name": "Breaking Bad",
         "rating": 1,
         "favCharacters": [],
         "episodes": 63
+    },
+    {
+        "genres": [],
+        "name": "One Piece",
+        "rating": 1,
+        "favCharacters": [],
+        "episodes": 1000
     }
 ]}

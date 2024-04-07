@@ -29,16 +29,19 @@ public class WatchList implements Writable {
     public void addShow(Show show) {
 
         watchList.add(show);
+        EventLog.getInstance().logEvent(new Event("Show Added: " + show.getName()));
     }
 
     //REQUIRES: watchlist is not empty
     //EFFECTS: returns the show at index n in watchlist
     public Show getShow(int n) {
+
         return watchList.get(n);
     }
 
     //EFFECTS: returns an unmodifiable watchlist at its current state
     public List<Show> getShows() {
+
         return Collections.unmodifiableList(watchList);
     }
 
@@ -59,6 +62,7 @@ public class WatchList implements Writable {
         for (Show show: watchList) {
             showNameList.add(show.getName());
         }
+        EventLog.getInstance().logEvent(new Event("Watchlist Viewed"));
         return showNameList;
     }
 
@@ -67,6 +71,7 @@ public class WatchList implements Writable {
     //EFFECTS: removes show from watchlist
     public void removeShow(Show show) {
         watchList.remove(show);
+        EventLog.getInstance().logEvent(new Event("Show Removed: " + show.getName()));
     }
 
     //EFFECTS: returns true is show is contained in watchList
