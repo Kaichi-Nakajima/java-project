@@ -56,3 +56,23 @@ watchlist
 and look at the top of the window.
 - You can save the state of my application by clicking on "Save"
 - You can reload the state of my application by clicking on "Load"
+
+### Phase 4: Task 2
+- Sat Apr 06 22:01:53 PDT 2024 \
+  Show Added: Breaking Bad
+- Sat Apr 06 22:02:01 PDT 2024 \
+  Show Added: Game Of Thrones
+- Sat Apr 06 22:02:09 PDT 2024 \
+  Show Added: One Piece
+- Sat Apr 06 22:02:22 PDT 2024 \
+  Show Removed: Game Of Thrones
+- Sat Apr 06 22:02:24 PDT 2024 \
+  Watchlist Viewed
+
+### Phase 4: Task 3
+- If given more time, I would refactor the WatchList into an abstract
+  class and create separate classes for short, medium and long
+  show watch lists. This is to reduce redundancy in the WatchList
+  class that share common functionality such as the methods:
+  numOfShortShows, numOfMediumShows and
+  numOfLongShows.
