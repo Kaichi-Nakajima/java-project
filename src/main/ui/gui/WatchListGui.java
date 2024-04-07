@@ -3,18 +3,21 @@ package ui.gui;
 //code Reference: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
 //                https://docs.oracle.com/javase/jp/8/docs/api/javax/swing/JList.html
 //                https://stackoverflow.com/questions/6420623/how-to-bind-arraylist-to-jlist
+//                https://docs.oracle.com/javase/tutorial/uiswing/events/windowlistener.html
+//                https://stackoverflow.com/questions/60516720/java-how-to-print-message-when-a-jframe-is-closed
 
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+
+import model.Event;
+import model.EventLog;
 import model.Show;
 import model.WatchList;
 import persistence.JsonReader;
@@ -37,7 +40,7 @@ public class WatchListGui extends JFrame {
     public WatchListGui() throws FileNotFoundException {
         super("WatchList GUI");
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         watchlist = new WatchList();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -53,6 +56,8 @@ public class WatchListGui extends JFrame {
 
         pack();
         setVisible(true);
+
+        closeGui();
 
     }
 
@@ -210,9 +215,24 @@ public class WatchListGui extends JFrame {
         }
     }
 
+    //MODIFIES: image
+    //EFFECTS: adds image to gui
     private void addImageGUI() {
         image = new WatchListImage(this);
         add(image, BorderLayout.NORTH);
+    }
+
+    //
+    public void closeGui() {
+        EventLog eventLog = EventLog.getInstance();
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent windowEvent) {
+                for (Event event: eventLog) {
+                    System.out.println(event);
+                }
+                System.exit(0);
+            }
+        });
     }
 
 
