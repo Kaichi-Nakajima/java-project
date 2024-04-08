@@ -71,8 +71,13 @@ and look at the top of the window.
 
 ### Phase 4: Task 3
 - If given more time, I would refactor the WatchList into an abstract
-  class and create separate classes for short, medium and long
-  show watch lists. This is to reduce redundancy in the WatchList
-  class that share common functionality such as the methods:
-  numOfShortShows, numOfMediumShows and
-  numOfLongShows.
+class and create separate watch list classes for short, medium and long
+show. This is to reduce redundancy in the WatchList
+class that share common functionality such as the methods:
+numOfShortShows, numOfMediumShows and
+numOfLongShows. Furthermore, looking at my UML class 
+diagram many classes have an association with the 
+WatchListGui class which causes coupling. If given more time I 
+would refactor the inner Action classes into their own separate 
+classes to reduce coupling and increase the re-usability of the 
+code by making the classes independent of each other.
