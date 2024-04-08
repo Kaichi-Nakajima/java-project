@@ -77,10 +77,8 @@ class that share common functionality such as the methods:
 numOfShortShows, numOfMediumShows and
 numOfLongShows. Furthermore, looking at my UML class 
 diagram many classes have an association with the 
-WatchListGui class which could cause coupling 
-and potentially make it difficult to make changes. If 
-given more time I would refactor the inner Action 
-classes into their own separate classes to reduce 
-coupling and increase the re-usability and flexibility of 
-the code by making the classes independent of each 
-other.
+WatchListGui class which results in coupling 
+and potentially make it difficult to make changes in the future. If given more 
+time I would refactor the inner Action classes into their own 
+separate classes to reduce coupling and increase the 
+re-usability and flexibility of the code.
